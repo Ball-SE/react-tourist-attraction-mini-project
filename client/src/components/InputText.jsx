@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ViewTravel from "../page/ViewTravel";
+import ViewTravel from "./ViewTravel";
 
 function InputText() {
   const [searchResult, setSearchResult] = useState([]);
