@@ -9,7 +9,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<InputText />} />
-          {/* <Route path="/viewtravel/:eid" element={<ViewTravel />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

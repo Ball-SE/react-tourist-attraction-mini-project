@@ -40,6 +40,9 @@ function ViewTravel({ searchResult, onCategoryClick }) {
                   >
                     {tag}
                   </button>
+                  {item.tags.length > 1 && tagIndex === item.tags.length - 2 && (
+                    <span className="text-gray-500 mx-1">และ</span>
+                  )}
                 </div>
               ))}
             </div>
