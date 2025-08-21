@@ -1,12 +1,17 @@
 import "./App.css";
 import InputText from "./components/InputText";
+// import ViewTravel from "./page/ViewTravel";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      {/* Start coding here */}
-      <h1 className="text-3xl font-bold text-center">เที่ยวไหนดีกว่ากัน</h1>
-      <InputText />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<InputText />} />
+          {/* <Route path="/viewtravel/:eid" element={<ViewTravel />} /> */}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

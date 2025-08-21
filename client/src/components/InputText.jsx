@@ -1,15 +1,27 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ViewTravel from "../page/ViewTravel";
 
 function InputText() {
   const [searchResult, setSearchResult] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   async function getSearch() {
-    const response = await axios.get(`http://localhost:4001/trips?keywords=${searchValue}`);
+    const response = await axios.get(
+      `http://localhost:4001/trips?keywords=${searchValue}`
+    );
     //console.log(response.data);
     setSearchResult(response.data.data);
   }
+
+  // Function to handle category clicks - append category to existing search value
+  const handleCategoryClick = (category) => {
+    if (searchValue.trim() === "") {
+      setSearchValue(category);
+    } else {
+      setSearchValue(prevValue => `${prevValue} ${category}`);
+    }
+  };
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -20,23 +32,21 @@ function InputText() {
   }, [searchValue]);
 
   return (
-    <div className="flex flex-col gap-2 w-1/2 mx-auto">
-      <input type="text" placeholder="ค้นหาที่เที่ยว" className="border border-gray-300 rounded-md p-2" 
-      onChange={(e) => {
-        setSearchValue(e.target.value);
-      }}
+    <div className="flex flex-col gap-2 w-full mx-auto mt-10">
+        <div className="flex flex-col gap-2 w-1/2 mx-auto">
+      <h1 className="text-2xl text-sky-500 font-bold text-center">เที่ยวไหนดี</h1>
+      <p className="text-left text-gray-500">ค้นหาที่เที่ยว</p>
+      <input
+        type="text"
+        placeholder="หาที่เที่ยวแล้วไปกัน ..."
+        className=" p-2 text-center border-b-2 border-gray-200 focus:outline-none "
+        value={searchValue}
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+        }}
       />
-
-      <div className="flex flex-col gap-1">
-        {searchResult.map((item) => (
-          <div key={item.eid}>
-            <h1 className="text-lg font-bold text-left">{item.title}</h1>
-            <p className="text-sm text-gray-500">{item.description}</p>
-            <img src={item.photos[0]} alt={item.title} className="w-full h-auto" />
-          </div>
-        ))}
       </div>
-      
+      <ViewTravel searchResult={searchResult} onCategoryClick={handleCategoryClick} />
     </div>
   );
 }
