@@ -7,11 +7,16 @@ function InputText() {
   const [searchValue, setSearchValue] = useState("");
 
   async function getSearch() {
-    const response = await axios.get(
-      `http://localhost:4001/trips?keywords=${searchValue}`
-    );
-    //console.log(response.data);
-    setSearchResult(response.data.data);
+    try {
+      const response = await axios.get(
+        `http://localhost:4001/trips?keywords=${searchValue}`
+      );
+      //console.log(response.data);
+      setSearchResult(response.data.data);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      setSearchResult([]);
+    }
   }
 
   // Function to handle category clicks - append category to existing search value

@@ -1,6 +1,5 @@
 import "./App.css";
 import InputText from "./components/InputText";
-// import ViewTravel from "./page/ViewTravel";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

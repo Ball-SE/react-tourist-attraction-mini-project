@@ -17,6 +17,7 @@ function ViewTravel({ searchResult, onCategoryClick }) {
             <Link
               className="text-lg font-bold text-left"
               to={item.url}
+              rel="noopener noreferrer"
               target="_blank"
             >
               {item.title}
@@ -31,6 +32,7 @@ function ViewTravel({ searchResult, onCategoryClick }) {
             <Link
               className="text-blue-500 underline rounded-md text-left"
               to={item.url}
+              rel="noopener noreferrer"
               target="_blank"
             >
               อ่านต่อ
