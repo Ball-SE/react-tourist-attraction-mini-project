@@ -9,7 +9,7 @@ function InputText() {
   async function getSearch() {
     try {
       const response = await axios.get(
-        `http://localhost:4001/trips?keywords=${searchValue}`
+        `/api/trips?keywords=${searchValue}`
       );
       //console.log(response.data);
       setSearchResult(response.data.data);

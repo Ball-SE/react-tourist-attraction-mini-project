@@ -37,6 +37,12 @@ app.get("/trips", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at port ${port}`);
-});
+// สำหรับ Vercel deployment
+export default app;
+
+// สำหรับ local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Server is running at port ${port}`);
+  });
+}
