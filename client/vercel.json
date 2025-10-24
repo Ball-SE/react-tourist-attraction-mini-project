@@ -1,0 +1,7 @@
+{
+    "builds": [{ "src": "vite.config.js", "use": "@vercel/static-build" }],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "react-tourist-attraction-mini-proje-delta.vercel.app/api/$1" }
+    ]
+  }
+  

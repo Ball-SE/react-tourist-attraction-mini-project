@@ -9,7 +9,7 @@ function InputText() {
   async function getSearch() {
     try {
       const response = await axios.get(
-        `http://localhost:4001/trips?keywords=${searchValue}`
+        `https://react-tourist-attraction-mini-proje-delta.vercel.app/?keywords=${searchValue}`
       );
       //console.log(response.data);
       setSearchResult(response.data.data);
