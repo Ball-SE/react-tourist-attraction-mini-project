@@ -9,7 +9,7 @@ function InputText() {
   async function getSearch() {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/trips?keywords=${searchValue}`
+        `${import.meta.env.VITE_API_BASE_URL}/trips?keywords=${searchValue}`
       );
       //console.log(response.data);
       setSearchResult(response.data.data);
