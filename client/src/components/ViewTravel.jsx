@@ -4,7 +4,7 @@ import ImageTravel from "./ImageTravel";
 function ViewTravel({ searchResult, onCategoryClick }) {
   return (
     <div className="flex flex-col gap-1 w-2/3 mx-auto">
-      {searchResult.map((item,index) => (
+      {searchResult && searchResult.length > 0 ? searchResult.map((item,index) => (
         <div key={item.eid} className="flex flex-row gap-4 relative w-[1300px] h-auto p-4">
           {/* รูปภาพหัวข้อ */}
           <img
@@ -40,7 +40,7 @@ function ViewTravel({ searchResult, onCategoryClick }) {
             {/* หมวดหมู่ */}
             <div className="flex flex-row gap-2 items-center">
               <span className="text-gray-500">หมวด</span>
-              {item.tags.map((tag, tagIndex) => (
+              {item.tags && item.tags.length > 0 ? item.tags.map((tag, tagIndex) => (
                 <div key={tagIndex} className="flex items-center">
                   <button 
                     className="text-gray-500 underline rounded-md text-left hover:text-blue-500 transition-colors"
@@ -52,7 +52,9 @@ function ViewTravel({ searchResult, onCategoryClick }) {
                     <span className="text-gray-500 mx-1">และ</span>
                   )}
                 </div>
-              ))}
+              )) : (
+                <span className="text-gray-400">ไม่มีหมวดหมู่</span>
+              )}
             </div>
             {/* รูปภาพที่เหลือ */}
             <ImageTravel photos={item.photos} item={item} />
@@ -62,7 +64,11 @@ function ViewTravel({ searchResult, onCategoryClick }) {
             </button>
           </div>
         </div>
-      ))}
+      )) : (
+        <div className="text-center text-gray-500 py-8">
+          {searchResult && searchResult.length === 0 ? "ไม่พบผลการค้นหา" : "กำลังโหลด..."}
+        </div>
+      )}
     </div>
   );
 }
